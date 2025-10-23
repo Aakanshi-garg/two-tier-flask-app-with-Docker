@@ -9,11 +9,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: two_tier
-      MYSQL_PASSWORD: user
-      MYSQL_USER: user
+    env_file:
+      - .env
     networks:
       - two-tier
 
@@ -26,11 +23,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-    environment:
-      MYSQL_DB: two_tier
-      MYSQL_HOST: mysql
-      MYSQL_PASSWORD: user
-      MYSQL_USER: user
+    env_file:
+      - .env
     depends_on:
       mysql:
         condition: service_healthy
