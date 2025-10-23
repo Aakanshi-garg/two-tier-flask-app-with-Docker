@@ -3,8 +3,7 @@
 This project demonstrates a two-tier architecture application using Flask (frontend/backend) and MySQL (database), containerized using Docker.
 The aim is to deploy and run both tiers in isolated containers connected through a Docker network.
 
-<img width="1722" height="1088" alt="Untitled" src="https://github.com/user-attachments/assets/fcb55ff9-a56e-4eb7-a37c-441ecc1fb9c8" />
-
+<img width="1165" height="293" alt="Capture" src="https://github.com/user-attachments/assets/cb6cb32e-aaf9-4147-86a0-2d14b8b7afce" />
 
 ## Prerequisites
 Before you begin, make sure you have the following installed:
