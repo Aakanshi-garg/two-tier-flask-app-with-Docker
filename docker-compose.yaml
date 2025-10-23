@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: two_tier
+      MYSQL_PASSWORD: user
+      MYSQL_USER: user
+    networks:
+      - two-tier
+
+  flask-app:
+    build:
+      context: .
+    container_name: two-tier
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f  http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    environment:
+      MYSQL_DB: two_tier
+      MYSQL_HOST: mysql
+      MYSQL_PASSWORD: user
+      MYSQL_USER: user
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: always
+    networks:
+      - two-tier
+    ports:
+      - "80:5000"
+
+networks:
+  two-tier:
