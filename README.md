@@ -107,7 +107,12 @@ To stop and remove the docker containers and network:
 docker compose down
 docker network rm two-tier
 ```
+### Recommendations
 
+- **Environment Variables:** Consider using environment variables for sensitive information like database credentials.
+
+- **Persistent Storage:** Implement Docker volumes to persist MySQL data beyond container lifecycles.
+  
 ## Why Docker compose?
 Using Docker Compose simplifies the management of multi-container applications. Instead of running and connecting each container manually, Compose allows you to define all services, networks, and environment variables in a single YAML file. This makes setup, scaling, and teardown much easier with just one command (docker compose up). It ensures consistency across environments, reduces manual errors, and helps in managing complex applications efficiently. Overall, Docker Compose provides a faster, more organized, and reproducible way to deploy multi-container setups like this Flask–MySQL project.
 
